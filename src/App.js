@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer'
@@ -8,8 +7,6 @@ import Search from './Search/Search';
 import Results from './Results/Results';
 import Programs from './Programs/Programs';
 import College from './College/College';
-import { Collection } from 'mongoose';
-
 
 
 function App() {
