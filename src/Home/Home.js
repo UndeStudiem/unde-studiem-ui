@@ -5,44 +5,6 @@ import Button from '@material-ui/core/Button';
 import {Link} from "react-router-dom";
 import axios from 'axios'
 
-let list = [
-  {
-    name: 'Abc123',
-    college: 'Abc123',
-    degree: 'Bachelor',
-    field: 'Abc123'
-
-  },
-  {
-    name: 'Abc123',
-    college: 'Abc123',
-    degree: 'Bachelor',
-    field: 'Abc123'
-
-  },
-  {
-    name: 'Abc123',
-    college: 'Abc123',
-    degree: 'Bachelor',
-    field: 'Abc123'
-
-  },
-  {
-    name: 'Abc123',
-    college: 'Abc123',
-    degree: 'Bachelor',
-    field: 'Abc123'
-
-  },
-  {
-    name: 'Abc123',
-    college: 'Abc123',
-    degree: 'Bachelor',
-    field: 'Abc123'
-
-  },
-]
-
 function Home() {
 
 

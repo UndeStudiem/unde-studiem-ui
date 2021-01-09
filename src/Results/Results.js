@@ -26,6 +26,7 @@ function Results(props) {
     let callString = `${process.env.REACT_APP_URL}/` 
                       + `${query.get("type")}?page=0&size=1000`
                       + `${query.get("name") ? '&name=' + query.get("name") : '' }`
+                      + `${query.get("degree") ? '&degree=' + query.get("degree") : '' }`
                       + `${query.get("cities") ? '&cities=' + query.get("cities") : '' }`
                       + `${query.get("fields") ? '&fields=' + query.get("fields") : '' }`
 

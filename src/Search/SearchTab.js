@@ -33,7 +33,7 @@ let allFields = [
 ];
 
 let allCities = [
-  'Bucuresti', 'Cluj', 'Timisoara', 'Iasi', 'Brasov', 'Constanta'
+  'București', 'Cluj-Napoca', 'Timișoara', 'Iași', 'Brașov', 'Constanța'
 ]
 
 
@@ -68,9 +68,9 @@ export default function SearchTab(props) {
           value={values.degree}
           onChange={handleChange('degree')}
         >
-          <MenuItem value={'Bachelor'}>Licenta</MenuItem>
-          <MenuItem value={'Master'}>Master</MenuItem>
-          <MenuItem value={'Doctoral'}>Doctorat</MenuItem>
+          <MenuItem value={'L'}>Licenta</MenuItem>
+          <MenuItem value={'M'}>Master</MenuItem>
+          <MenuItem value={'D'}>Doctorat</MenuItem>
         </Select>
       </FormControl>
       : 
