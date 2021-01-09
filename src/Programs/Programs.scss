@@ -5,7 +5,9 @@
     margin-top: 20vh;
     align-items: left;
     text-align: left;
-    height: 71vh;
+    min-height: 71vh;
+    height: auto;
+
 
     .PageTitle{
         font-size: 30px;

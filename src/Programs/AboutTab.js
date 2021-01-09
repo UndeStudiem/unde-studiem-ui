@@ -7,7 +7,7 @@ export default function AboutTab(props) {
 
     <div className='AboutTab'>
 
-      {props.program.college.description}
+      {props.program.college ? props.program.college.description : ''}
 
 
     </div>

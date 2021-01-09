@@ -196,8 +196,8 @@ export default function CardItem2(props) {
                   Taxa anuala
                 </Typography>
                 <Typography component="body1" variant="body1">
-                  ?
-                  {/* {props.item.taxa} */}
+                  
+                  {props.item.tax}
                 </Typography>
               </div>
 
