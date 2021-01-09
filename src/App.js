@@ -7,6 +7,8 @@ import Search from './Search/Search';
 import Results from './Results/Results';
 import Programs from './Programs/Programs';
 import College from './College/College';
+import University from './University/University';
+
 
 
 function App() {
@@ -22,8 +24,9 @@ function App() {
         <Route exact path={`/`} exact component={Home}/>
         <Route exact path={`/search`} exact component={Search}/>
         <Route exact path={`/results`} exact component={Results}/>
-        <Route exact path={`/programs/:id`} exact component={Programs}/>
+        <Route exact path={`/program/:id`} exact component={Programs}/>
         <Route exact path={`/college/:id`} exact component={College}/>
+        <Route exact path={`/university/:id`} exact component={University}/>
 
         {/* <Route exact path={`/tests/:id`} exact component={TestPage}/>
         <Route exact path={`/createdtests`} exact component={CreatedTests}/>

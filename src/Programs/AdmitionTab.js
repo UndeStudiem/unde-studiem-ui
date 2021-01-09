@@ -7,13 +7,20 @@ export default function AdmitionTab(props) {
 
     <div className='AdmitionTab'>
 
-      Modalitate admitere: DOSAR
+      Modalitate admitere: {props.program.admissionType}
 
       <br/>
 
-      Locuri: 100
+      Total locuri: {props.program.totalPlaces}
 
       <br/>
+      Locuri taxa: {props.program.taxPlaces}
+
+      <br/>
+      Locuri buget: {props.program.taxFreePlaces}
+
+      <br/>
+      
 
 
     </div>

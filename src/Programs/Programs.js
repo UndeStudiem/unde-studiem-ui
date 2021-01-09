@@ -1,30 +1,23 @@
 import React from 'react';
 import './Programs.scss';
 import ProgramsMenu from './ProgramsMenu'
+import axios from 'axios'
 
-let program =  {
-  name: 'Calculatoare si tehnologia informatiei',
-  college: 'Facultatea de Automatica si Calculatoare',
-  university: 'Universitatea politehnica din Bucuresti',
-  city: 'Bucuresti',
-  degree: 'Bachelor',
-  fields: ['IT', 'programare', 'stiinte ingineresti'],
-  lang: 'RO',
-  type: 'IF',
-  years: 4,
-  semesters: 8,
-  credits: 200,
-  locuri: 250,
-  buget: 100,
-  loc_taxa: 150,
-  taxa: 5000,
-  admition: 'DOSAR, EXAMEN',
-  courses: {}
-}
 
 function Programs({match}) {
 
   let id = match.params.id;
+
+  const [program, setProgram] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(`${process.env.REACT_APP_URL}/program/${id}`)
+    .then(response => {
+      setProgram(response.data);
+    })
+    .catch(error => alert("error"));
+
+  }, []);
 
   return (
     <div className="Programs">
@@ -34,12 +27,12 @@ function Programs({match}) {
         {program.name}
       </div>
       <div className='PageTitle2'>
-        {program.college}
+        {program.college ? program.college.name : ''}
       </div>
 
 
 
-      <ProgramsMenu/>
+      <ProgramsMenu program={program}/>
 
     </div>
   );

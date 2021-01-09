@@ -3,6 +3,7 @@ import './Home.scss';
 import CardItem from '../Card/CardItem'
 import Button from '@material-ui/core/Button';
 import {Link} from "react-router-dom";
+import axios from 'axios'
 
 let list = [
   {
@@ -42,7 +43,19 @@ let list = [
   },
 ]
 
-function Home(props) {
+function Home() {
+
+
+  const [sugestions, setSugestions] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(`${process.env.REACT_APP_URL}/college?page=0&size=8`)
+    .then(response => {
+      setSugestions(response.data);
+    })
+    .catch(error => alert("error"));
+
+  }, []);
 
   return (
     <div className="Home">
@@ -62,7 +75,7 @@ function Home(props) {
           Sugestii
         </div>
 
-        {list.map(Element => 
+        {sugestions.map(Element => 
           <CardItem item={Element}/>
           
           )}

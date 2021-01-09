@@ -8,21 +8,23 @@ function Filter(props) {
   return (
     <div className="Filter">
 
-      <div className='Filter-degree'>
-        Program de:&nbsp;
-        {/* {props.degree.map(Element => <><Chip label={Element} /> &nbsp;</>)} */}
-        <Chip label={props.degree}/>
-      </div>
+      {props.type == 'program' ? 
+          <div className='Filter-degree'>
+            Program de:&nbsp;
+            <Chip label={props.degree}/>
+          </div> : ''
+      }
 
-
-      <div className='Filter-fields'>
-        Domenii:&nbsp;
-        {props.fields.map(Element => <><Chip label={Element} /> &nbsp;</>)}
-      </div>
+      {props.type == 'program' || props.type == 'college' ? 
+        <div className='Filter-fields'>
+          Domenii:&nbsp;
+          {props.fields.filter(Element => Element).map(Element => <><Chip label={Element} /> &nbsp;</>)}
+        </div>
+      : ''}
 
       <div className='Filter-city'>
         Orase:&nbsp;
-        {props.cities.map(Element => <><Chip label={Element} /> &nbsp;</>)}
+        {props.cities.filter(Element => Element).map(Element => <><Chip label={Element} /> &nbsp;</>)}
       </div>
 
     </div>

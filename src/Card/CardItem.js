@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {Link} from "react-router-dom";
 import './CardItem.scss'
 
 const useStyles = makeStyles({
@@ -31,24 +32,20 @@ export default function CardItem(props) {
             title={props.item.name}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h6" component="h6">
               {props.item.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              Descriere bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-              bla bla bla bla bla bla bla 
-              bla bla bla bla bla bla bla 
-              bla bla bla bla bla bla bla 
+              {props.item.description}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
+          <Link to={`/college/${props.item._id}`}>
+            <Button size="small" color="primary">
+              Afla mai multe
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </div>

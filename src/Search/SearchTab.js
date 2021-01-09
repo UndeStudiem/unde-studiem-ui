@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let fields = [
-  'Drept', 'Finante', 'Contabilitate', 'Tehnologia informatiei', 'Stiinte', 'Matematica'
+let allFields = [
+  'Drept', 'Finante', 'Contabilitate', 'Tehnologia informatiei', 'Stiinte', 'Matematica', 'IT', 'Economie'
 ];
 
 let allCities = [
@@ -43,7 +43,7 @@ export default function SearchTab(props) {
 
   const [values, setValues] = React.useState({
     degree: '',
-    field: [],
+    fields: [],
     cities: [],
     name: [],
 
@@ -103,31 +103,40 @@ export default function SearchTab(props) {
         </Select>
       </FormControl>
 
-      <FormControl className={classes.formControl}>
-      <InputLabel id="field-label">Domeniu</InputLabel>
-        <Select
-          labelId="field-label"
-          id="field"
-          multiple
-          value={values.field}
-          onChange={handleChange('field')}
-          renderValue={(selected) => (
-            <div className={classes.chips}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} className={classes.chip} />
-              ))}
-            </div>
-          )}
-        >
-
-          {fields.map(Element => 
-              <MenuItem value={Element}>{Element}</MenuItem>
+      {props.type === 0 || props.type === 1 ? 
+      <>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="fields-label">Domeniu</InputLabel>
+          <Select
+            labelId="fields-label"
+            id="fields"
+            multiple
+            value={values.fields}
+            onChange={handleChange('fields')}
+            renderValue={(selected) => (
+              <div className={classes.chips}>
+                {selected.map((value) => (
+                  <Chip key={value} label={value} className={classes.chip} />
+                ))}
+              </div>
             )}
-        </Select>
-      </FormControl>
+          >
+
+            {allFields.map(Element => 
+                <MenuItem value={Element}>{Element}</MenuItem>
+              )}
+          </Select>
+        </FormControl>
+      </>
+      : ''}
+
 
       <br/><br/><br/>
-      <Link to="/results?type=programs&degree=master&fields=IT-stiinte sociale&cities=Bucuresti-Constanta">
+      <Link to={`/results?type=${props.type == 0 ? 'program' : props.type == 1 ? 'college' : 'university'}&` +
+                `degree=${values.degree}&` +
+                `fields=${values.fields.reduce((a,b) => a + '-' + b, '')}&` +
+                `cities=${values.cities.reduce((a,b) => a + '-' + b, '')}&` +
+                `name=${values.name}` }>
         <Button variant="contained" color="primary" size="large">
           Cauta
         </Button>

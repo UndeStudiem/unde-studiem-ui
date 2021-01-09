@@ -1,19 +1,22 @@
 import React from 'react';
 import './College.scss';
 import CollegeMenu from './CollegeMenu'
-
-let college =  {
-  name: 'Facultatea de Automatica si Calculatoare',
-  university: 'Universitatea politehnica din Bucuresti',
-  city: 'Bucuresti',
-  degree: 'Bachelor',
-  fields: ['IT', 'programare', 'stiinte ingineresti'],
-  lang: 'RO',
-}
+import axios from 'axios'
 
 function College({match}) {
 
   let id = match.params.id;
+
+  const [college, setCollege] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(`${process.env.REACT_APP_URL}/college/${id}`)
+    .then(response => {
+      setCollege(response.data);
+    })
+    .catch(error => alert("error"));
+
+  }, []);
 
   return (
     <div className="College">
@@ -23,12 +26,12 @@ function College({match}) {
         {college.name}
       </div>
       <div className='PageTitle2'>
-        {college.university}
+        {college.university ? college.university.name : ''}
       </div>
 
 
 
-      <CollegeMenu/>
+      <CollegeMenu college={college}/>
 
     </div>
   );

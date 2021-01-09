@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import './CardItem.scss'
 import Chip from '@material-ui/core/Chip'; 
+import {Link} from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,11 +44,6 @@ const useStyles = makeStyles((theme) => ({
     //height: 140
   },
   cell: {
-    // borderLeft: `2px solid ${theme.palette.divider}`,
-    // borderBottom: `2px solid ${theme.palette.divider}`,
-    // borderRight: `2px solid ${theme.palette.divider}`,
-    // borderTop: `2px solid ${theme.palette.divider}`,
-
     padding: theme.spacing(1, 2),
     minWidth: 120,
   },
@@ -82,28 +79,31 @@ export default function CardItem2(props) {
           <div className={classes.content}>
             <CardContent className={classes.subcontent}>
               <Typography component="h6" variant="h6">
-                {props.item.name}
+                <Link to={`/program/${props.item._id}`}>
+                  {props.item.name}
+                </Link>
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
                 Program de &nbsp;
-                { props.item.degree == 'Bachelor' ? 'licenta' :
-                  props.item.degree == 'Master' ? 'masterat' :
-                  props.item.degree == 'Doctoral' ? 'doctorat' : ''
+                { props.item.degree == 'L' ? 'licenta' :
+                  props.item.degree == 'M' ? 'masterat' :
+                  props.item.degree == 'D' ? 'doctorat' : ''
                 }
               </Typography>
               <Typography component="body1" variant="body1">
-                {props.item.college}
+                {props.item.college.name}
               </Typography>
               <Typography component="body1" variant="body1">
-                {props.item.university}
+                {props.item.college.university.name}
               </Typography>
               <Typography component="body1" variant="body1">
                 <LocationOnIcon />
-                {props.item.city}
+                {props.item.college.university.city}
               </Typography>
               <br/>
               <Typography component="body1" variant="body1">
-                {props.item.fields.map(Element => <><Chip label={Element} /> &nbsp;</>)}
+                <Chip label={props.item.field} />
+                {/* {props.item.fields.map(Element => <><Chip label={Element} /> &nbsp;</>)} */}
               </Typography>
             </CardContent>
 
@@ -116,7 +116,7 @@ export default function CardItem2(props) {
                   Limba predare
                 </Typography>
                 <Typography component="body1" variant="body1">
-                  {props.item.lang}
+                  {props.item.language}
                 </Typography>
               </div>
 
@@ -135,7 +135,7 @@ export default function CardItem2(props) {
                   Ani de studiu
                 </Typography>
                 <Typography component="body1" variant="body1">
-                  {props.item.years}
+                  {props.item.duration}
                 </Typography>
               </div>
 
@@ -144,7 +144,7 @@ export default function CardItem2(props) {
                   Nr semestre
                 </Typography>
                 <Typography component="body1" variant="body1">
-                  {props.item.semesters}
+                  {props.item.organization}
                 </Typography>
               </div>
 
@@ -167,7 +167,7 @@ export default function CardItem2(props) {
                 </Typography>
                 <br/>
                 <Typography component="body1" variant="body1">
-                  {props.item.locuri}
+                  {props.item.totalPlaces}
                 </Typography>
               </div>
 
@@ -177,7 +177,7 @@ export default function CardItem2(props) {
                   Locuri buget
                 </Typography>
                 <Typography component="body1" variant="body1">
-                {props.item.buget}
+                {props.item.taxFreePlaces}
                 </Typography>
               </div>
 
@@ -187,7 +187,7 @@ export default function CardItem2(props) {
                 </Typography>
                 <br/>
                 <Typography component="body1" variant="body1">
-                {props.item.loc_taxa}
+                {props.item.taxPlaces}
                 </Typography>
               </div>
 
@@ -196,7 +196,8 @@ export default function CardItem2(props) {
                   Taxa anuala
                 </Typography>
                 <Typography component="body1" variant="body1">
-                  {props.item.taxa}
+                  ?
+                  {/* {props.item.taxa} */}
                 </Typography>
               </div>
 
@@ -205,7 +206,7 @@ export default function CardItem2(props) {
                   Modalitate admitere
                 </Typography>
                 <Typography component="body1" variant="body1">
-                  {props.item.admition}
+                  {props.item.admissionType}
                 </Typography>
               </div>
 

@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function UniversityMenu() {
+export default function UniversityMenu(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -96,16 +96,16 @@ export default function UniversityMenu() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-            <AboutTab/>
+            <AboutTab university={props.university}/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-            <ProgramsTab/>
+            <ProgramsTab university={props.university}/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-            <StudentsTab/>
+            <StudentsTab university={props.university}/>
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-            <ReviewTab/>
+            <ReviewTab university={props.university}/>
         </TabPanel>
       </SwipeableViews>
     </div>

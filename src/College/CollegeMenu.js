@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function SearchMenu() {
+export default function CollegeMenu(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -96,16 +96,16 @@ export default function SearchMenu() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-            <AboutTab/>
+            <AboutTab college={props.college}/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-            <ProgramsTab/>
+            <ProgramsTab college={props.college}/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-            <StudentsTab/>
+            <StudentsTab college={props.college}/>
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-            <ReviewTab/>
+            <ReviewTab college={props.college}/>
         </TabPanel>
       </SwipeableViews>
     </div>
