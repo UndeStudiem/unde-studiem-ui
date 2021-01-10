@@ -26,7 +26,7 @@ function Navbar(props) {
 
 
               <div className='btnContainer'>
-                <button type="button" onClick={() => window.parent.open('https://www.google.com/')} class="btn btn-light">
+                <button type="button" onClick={() => window.parent.open('https://docs.google.com/forms/d/e/1FAIpQLScfrTCl4ZG1uslZmp7MtOOeOVbkVlIC05MdFRQ8JsyNRFtRqg/viewform')} class="btn btn-light">
                   Da-ne feedback!
                 </button>
               </div>

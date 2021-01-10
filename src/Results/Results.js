@@ -9,6 +9,16 @@ import ArrowBack from '@material-ui/icons/ArrowBack';
 import { useLocation } from "react-router-dom";
 import Filter from './Filter'
 import axios from 'axios'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}))
 
 
 function useQuery() {
@@ -18,9 +28,11 @@ function useQuery() {
 
 function Results(props) {
   let query = useQuery();
+  const classes = useStyles();
 
 
   const [list, setList] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     let callString = `${process.env.REACT_APP_URL}/` 
@@ -33,6 +45,7 @@ function Results(props) {
     axios.get(callString)
     .then(response => {
       setList(response.data);
+      setLoading(false)
     })
     .catch(error => alert("error"));
 
@@ -54,6 +67,10 @@ function Results(props) {
 
       
       <Filter degree={query.get("degree")} fields={query.get("fields").split('-')} cities={query.get("cities").split('-')}/>
+
+      <div className={classes.root}>
+              {loading ? <CircularProgress /> : ''}
+      </div>
 
       <div className='Results-list'>
 

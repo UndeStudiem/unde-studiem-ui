@@ -61,7 +61,7 @@ export default function SearchTab(props) {
 
       {props.type === 0 ?
        <FormControl className={classes.formControl}>
-        <InputLabel id="degree-label">Tip studii</InputLabel>
+        <InputLabel id="degree-label">Tip studii (optional)</InputLabel>
         <Select
           labelId="degree-label"
           id="degree"
@@ -75,14 +75,14 @@ export default function SearchTab(props) {
       </FormControl>
       : 
       <FormControl className={classes.formControl}>
-        <TextField id="standard-basic" label="Nume" />
+        <TextField id="standard-basic" label="Nume (optional)" />
       </FormControl>
 
 
       }
 
       <FormControl className={classes.formControl}>
-      <InputLabel id="city-label">Oras</InputLabel>
+      <InputLabel id="city-label">Oras (optional)</InputLabel>
         <Select
           labelId="city-label"
           id="city"
@@ -106,7 +106,7 @@ export default function SearchTab(props) {
       {props.type === 0 || props.type === 1 ? 
       <>
         <FormControl className={classes.formControl}>
-          <InputLabel id="fields-label">Domeniu</InputLabel>
+          <InputLabel id="fields-label">Domeniu (optional)</InputLabel>
           <Select
             labelId="fields-label"
             id="fields"
